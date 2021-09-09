@@ -1,6 +1,6 @@
 import React from "react";
 
-function Form({ setInput, todos, setTodos, input }) {
+function Form({ setInput, todos, setTodos, input, editMode, setEditMode }) {
   const handleChange = (e) => {
     setInput(e.target.value);
   };
@@ -10,6 +10,8 @@ function Form({ setInput, todos, setTodos, input }) {
     if (input !== "") {
       setTodos([{ text: input, id: Math.random() * 1000 }, ...todos]);
     }
+    editMode ? setEditMode(false) : setEditMode(editMode);
+    //
     setInput("");
   };
   return (
@@ -24,8 +26,13 @@ function Form({ setInput, todos, setTodos, input }) {
           value={input}
           placeholder="Add your todo"
         />
-        <button onClick={handleSubmit} type="submit">
-          Add
+        <button
+          onClick={(e) => {
+            handleSubmit(e);
+          }}
+          type="submit"
+        >
+          {editMode ? "Edit" : "Add"}
         </button>
       </form>
     </div>
