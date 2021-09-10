@@ -4,27 +4,18 @@ import TodoList from "./components/TodoList";
 import "./style/style.scss";
 
 function App() {
-  const [input, setInput] = useState("");
+  let [inputTxt, setInputTxt] = useState("");
   const [todos, setTodos] = useState([]);
-  const [editMode, setEditMode] = useState(false);
   return (
     <div className="todo-app">
       <div className="wrapper">
         <Form
-          input={input}
-          setInput={setInput}
           todos={todos}
           setTodos={setTodos}
-          editMode={editMode}
-          setEditMode={setEditMode}
+          inputTxt={inputTxt}
+          setInputTxt={setInputTxt}
         />
-        <TodoList
-          setEditMode={setEditMode}
-          setInput={setInput}
-          input={input}
-          setTodos={setTodos}
-          todos={todos}
-        />
+        <TodoList setTodos={setTodos} todos={todos} inputTxt={inputTxt} />
       </div>
     </div>
   );
