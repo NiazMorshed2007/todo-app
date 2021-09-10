@@ -7,11 +7,14 @@ function App() {
   let [inputTxt, setInputTxt] = useState("");
   const [todos, setTodos] = useState([]);
   const [editMode, setEditMode] = useState(false);
+  const [inputId, setInputId] = useState();
 
   return (
     <div className="todo-app">
       <div className="wrapper">
         <Form
+          inputId={inputId}
+          setInputId={setInputId}
           setEditMode={setEditMode}
           editMode={editMode}
           todos={todos}
@@ -20,11 +23,14 @@ function App() {
           setInputTxt={setInputTxt}
         />
         <TodoList
+          inputId={inputId}
+          setInputId={setInputId}
           setEditMode={setEditMode}
           editMode={editMode}
           setTodos={setTodos}
           todos={todos}
           inputTxt={inputTxt}
+          setInputTxt={setInputTxt}
         />
       </div>
     </div>
