@@ -23,8 +23,16 @@ function Form(props) {
           className="todo-input"
           placeholder="Add your todo"
         />
-        <button onClick={(e) => handleSubmit(e)} type="submit">
-          Add
+        <button
+          onClick={(e) => {
+            handleSubmit(e);
+            props.editMode
+              ? props.setEditMode(false)
+              : props.setEditMode(props.editMode);
+          }}
+          type="submit"
+        >
+          {props.editMode ? "Edit" : "Add"}
         </button>
       </form>
     </div>

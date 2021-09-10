@@ -7,7 +7,10 @@ function TodoList(props) {
         return i !== id;
       })
     );
-    console.log(props.todos);
+  };
+
+  const handleEditMode = () => {
+    props.setEditMode(true);
   };
   return (
     <div className="todo-list-wrapper">
@@ -17,7 +20,7 @@ function TodoList(props) {
             <p>{e.text}</p>
           </div>
           <div>
-            <button>Edit</button>
+            <button onClick={() => handleEditMode()}>Edit</button>
             <button onClick={() => handleDlt(i)}>Delete</button>
           </div>
         </div>
